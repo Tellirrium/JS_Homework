@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+
+.X, .Y {
+    margin-bottom: 5px;
+}
+
+#btn {
+	cursor: pointer;
+}
+
+table {
+    /*display: none;*/
+    border: solid black 1px;
+    width: 250px;
+    height: 250px;
+    background: white;
+    margin-top: 20px;
+}
+
+.tabl1 tr:nth-child(odd) td:nth-child(even),
+.tabl1 tr:nth-child(even) td:nth-child(odd) {
+    background: black;
+}
+
+.tabl2 tr:nth-child(odd) td:nth-child(odd),
+.tabl2 tr:nth-child(even) td:nth-child(even) {
+    background: black;
+}
+
+
