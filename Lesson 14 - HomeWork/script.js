@@ -4,6 +4,7 @@ var button = document.getElementById('button'),
     userbtns = document.getElementsByClassName('users')[0];
 
 var users = [];
+var counter = 0;
 
 button.addEventListener('click', request);
 
@@ -49,14 +50,36 @@ function request() {
             var src = localInfo['avatar'];
             var fn = localInfo['first_name'];
             var ln = localInfo['last_name'];
+            counter = (i + 1);
 
             var userinfo = document.createElement('div');
             info.appendChild(userinfo);
             var userinforeal = info.getElementsByTagName('DIV')[i];
-            userinforeal.innerHTML = 'First name ' + fn + '/n' + 'Last name ' + ln;
-            userinforeal.innerHTML = '<img></img>';
-            var img = userinforeal.getElementsByTagName('IMG')[i];
+            userinforeal.setAttribute('id', counter);
+            userinforeal.innerHTML = '<img></img>' + ' ' + 'First name ' + fn + ' ' + 'Last name ' + ln;
+            var img = userinforeal.getElementsByTagName('IMG')[0];
             img.setAttribute('src', src);
+        }
+        var div1 = document.getElementById('1');
+        var div2 = document.getElementById('2');
+        var div3 = document.getElementById('3');
+
+        userbtns.onclick = function(event) {
+            var target = event.target;
+            if (target == div2) {
+                div2.className = 'block';
+                div3.className = 'none';
+                div1.className = 'none';
+            } else if (target == div3) {
+                div3.className = 'block';
+                div1.className = 'none';
+                div2.className = 'none';
+            } else if (target == div1) {
+                div1.className = 'block';
+                div3.className = 'none';
+                div2.className = 'none';
+            }
+
         }
 
     }

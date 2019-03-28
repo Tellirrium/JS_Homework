@@ -10,10 +10,11 @@
 }
 .info {
     width: 550px;
-    height: 160px;
+    height: 130px;
     background-color: lightgrey;
     border-radius: 5px;
     margin-top: 20px;
+    overflow: hidden;
 }
 .userbutton {
 	display: inline-block;
@@ -24,4 +25,12 @@
 	font-weight: bold;
 	cursor: pointer;
 	border-radius: 5px;
+}
+
+.none {
+	display: none;
+}
+
+.block {
+	display: block;
 }
