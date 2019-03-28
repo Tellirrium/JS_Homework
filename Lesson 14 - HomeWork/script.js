@@ -1,9 +1,119 @@
 var button = document.getElementById('button'),
     info = document.getElementsByClassName('info')[0],
-    container = document.getElementsByClassName('container')[0]
+    container = document.getElementsByClassName('container')[0],
+    userbtns = document.getElementsByClassName('users')[0];
+
 var users = [];
 
-button.onclick = function() {
+button.addEventListener('click', request);
+
+function request() {
+    var xhr = new XMLHttpRequest;
+
+    xhr.open('GET', 'https://reqres.in/api/users?page=2');
+
+    xhr.send();
+    console.log(xhr.status);
+
+    xhr.onload = function() {
+
+        users = JSON.parse(this.response).data;
+        var length = users.length;
+        for (var i = 0; i < length; i++) {
+            var userfon = document.createElement('div');
+            userbtns.appendChild(userfon);
+            var userdiv = userbtns.getElementsByTagName('DIV')[i];
+            userdiv.innerHTML = 'User ' + (i + 1);
+            userdiv.setAttribute('class', 'userbutton');
+
+            // var localInfo = users[i];
+            // var src = localInfo['avatar'];
+            // var fn = localInfo['first_name'];
+            // var ln = localInfo['last_name'];
+
+            // for (var key in users[i]) {
+            //     var userinfo = document.createElement('div');
+            //     info.appendChild(userinfo);
+            //     var userinforeal = info.getElementsByTagName('DIV')[i];
+            //     if (key != 'avatar') {
+            //         userinforeal.innerHTML = key + ' ' + localInfo.key + '/n';
+            //     } else {
+            //         var img = document.createElement('img');
+            //         userinforeal.appendChild(img);
+            //         var imgsrc = userinforeal.getElementsByTagName('IMG')[i];
+            //         imgsrc.setAttribute('src', src);
+            //     }
+            // }
+
+            var localInfo = users[i];
+            var src = localInfo['avatar'];
+            var fn = localInfo['first_name'];
+            var ln = localInfo['last_name'];
+
+            var userinfo = document.createElement('div');
+            info.appendChild(userinfo);
+            var userinforeal = info.getElementsByTagName('DIV')[i];
+            userinforeal.innerHTML = 'First name ' + fn + '/n' + 'Last name ' + ln;
+            userinforeal.innerHTML = '<img></img>';
+            var img = userinforeal.getElementsByTagName('IMG')[i];
+            img.setAttribute('src', src);
+        }
+
+    }
+
+    xhr.onerror = function() {
+        console.log(this.status + ' - ' + this.statusText);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*button.onclick = function() {
 
      getUserList();
      setTimeout(createUser, 100);
@@ -66,5 +176,5 @@ function createUser() {
     img.setAttribute('src', ava);
     img.setAttribute('class', 'imgJS');
     divInfo.insertBefore(img, p);
-}
+}*/
 
