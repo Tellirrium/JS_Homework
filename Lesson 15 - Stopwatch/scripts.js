@@ -13,57 +13,57 @@ var hour = document.getElementById('hour'),
 btn.addEventListener('click', stopwatch);
 
 function stopwatch() {
-	img.setAttribute('src', 'images/Big_Red_Button.png');
+    img.setAttribute('src', 'images/Big_Red_Button.png');
 
-	reset.className = 'reset';
-	save.className = 'save';
-	del.className = 'delete';
+    reset.className = 'reset';
+    save.className = 'save';
+    del.className = 'delete';
 
-	counter++;
+    counter++;
 
-	var timer = setInterval(function() {
-		if (counter == 1 && counter2 == 'on') {
+    var timer = setInterval(function() {
+        if (counter == 1 && counter2 == 'on') {
 
-			if (sec.innerText == 100) {
-				sec.innerText = 0;
+            if (sec.innerText == 100) {
+                sec.innerText = 0;
 
-				min.innerText++;
+                min.innerText++;
 
-					if (min.innerText == 60) {
-						hour.innerText++;
+                if (min.innerText == 60) {
+                    hour.innerText++;
 
-						min.innerText = 0;
+                    min.innerText = 0;
 
-							if (hour.innerText == 60) {
-								clearInterval(timer);
-			}
-		}
-	}
+                    if (hour.innerText == 60) {
+                        clearInterval(timer);
+                    }
+                }
+            }
 
-	sec.innerText++;
+            sec.innerText++;
 
-		} else {
-			clearInterval(timer);
-			counter = 0;
-			img.setAttribute('src', 'images/start.png');
-			reset.className = 'reset2';
-			save.className = 'save2';
-			del.className = 'delete2';
-		}
-	}, 10);
+        } else {
+            clearInterval(timer);
+            counter = 0;
+            img.setAttribute('src', 'images/start.png');
+            reset.className = 'reset2';
+            save.className = 'save2';
+            del.className = 'delete2';
+        }
+    }, 10);
 }
 
 reset.addEventListener('click', resetValue);
 
 function resetValue() {
-	if (counter != 1) {
-		min.innerText = 0;
-		sec.innerText = 0;
-		hour.innerText = 0;
-		reset.className = 'reset';
-		save.className = 'save';
-		// del.className = 'delete';
-	}
+    if (counter != 1) {
+        min.innerText = 0;
+        sec.innerText = 0;
+        hour.innerText = 0;
+        reset.className = 'reset';
+        save.className = 'save';
+        // del.className = 'delete';
+    }
 }
 
 save.addEventListener('click', saveValue);
@@ -71,26 +71,26 @@ save.addEventListener('click', saveValue);
 var counter3 = -1;
 
 function saveValue() {
-	if (counter != 1 && sec.innerText != 0 ) {
-		counter3++;
+    if (counter != 1 && sec.innerText != 0) {
+        counter3++;
 
-		var p = document.createElement('p');
-		info.appendChild(p);
+        var p = document.createElement('p');
+        info.appendChild(p);
 
-		var pReal = info.getElementsByTagName('p')[counter3];
+        var pReal = info.getElementsByTagName('p')[counter3];
 
-		pReal.innerText = hour.innerText + ' : ' + min.innerText + ' : ' + sec.innerText;
-	}
+        pReal.innerText = hour.innerText + ' : ' + min.innerText + ' : ' + sec.innerText;
+    }
 }
 
 del.addEventListener('click', delValue);
 
 function delValue() {
-	if (counter != 1) {
-//         while (myNode.firstChild) {
-//         		myNode.removeChild(myNode.firstChild);
-// }
-		info.innerHTML = '';
-		counter3 = -1;
-	}
+    if (counter != 1) {
+        //         while (myNode.firstChild) {
+        //         		myNode.removeChild(myNode.firstChild);
+        // }
+        info.innerHTML = '';
+        counter3 = -1;
+    }
 }
