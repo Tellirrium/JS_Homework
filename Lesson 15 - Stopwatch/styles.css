@@ -1,0 +1,57 @@
+.btn img, .btnOf img {
+	width: 70px;
+	height: 70px;
+	cursor: pointer;
+	transition: transform .1s linear;
+}
+
+.btn img:hover, .btnOf img:hover {
+	transform: scale(1.05);
+}
+
+span {
+	font-family: 'Lato', sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
+.reset, .delete, .save {
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #A9A9A9;
+	color: white;
+	margin: 0 5px;
+}
+
+.reset2, .delete2, .save2 {
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #2F4F4F;
+	color: white;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.icons {
+	display: flex;
+	margin-top: 10px;
+}
+
+.info p {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0 10px;
+}
+
