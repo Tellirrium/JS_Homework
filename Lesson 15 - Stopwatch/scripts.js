@@ -4,65 +4,102 @@ var hour = document.getElementById('hour'),
     btn = document.getElementsByClassName('btn')[0],
     img = btn.getElementsByTagName('img')[0],
     reset = document.getElementsByClassName('reset')[0],
-    save = document.getElementsByClassName('save')[0],
-    del = document.getElementsByClassName('delete')[0],
-    info = document.getElementsByClassName('info')[0],
-    counter = 0,
-    counter2 = 'on';
+    save = document.getElementsByClassName('save2')[0],
+    del = document.getElementsByClassName('delete2')[0],
+    info = document.getElementsByClassName('info')[0];
 
-btn.addEventListener('click', stopwatch);
+var timer;
 
-function stopwatch() {
+if (hour.innerText < 10 && min.innerText < 10 && sec.innerText < 10) {
+    min.innerText = '0' + min.innerText;
+    hour.innerText = '0' + hour.innerText; 
+    sec.innerText = '0' + sec.innerText;
+}
+
+btn.onclick = function () {
     img.setAttribute('src', 'images/Big_Red_Button.png');
 
     reset.className = 'reset';
-    save.className = 'save';
-    del.className = 'delete';
+    save.className = 'save2';
+    del.className = 'delete2';
 
-    counter++;
+    function minSec() {
+        if (sec.innerText < 10) {
+            sec.innerText = '0' + sec.innerText;           
+        }
+    }
 
-    var timer = setInterval(function() {
-        if (counter == 1 && counter2 == 'on') {
+    function minMin() {
+        if (min.innerText < 10) {
+            min.innerText = '0' + min.innerText;           
+        }
+    }
 
+    function minHour() {
+        if (hour.innerText < 10) {
+            hour.innerText = '0' + hour.innerText;           
+        }
+    }
+
+    if (btn.getAttribute('data-state') == 'start') {
+
+        timer = setInterval(function() {
+        
             if (sec.innerText == 100) {
                 sec.innerText = 0;
 
+                minSec();
+
                 min.innerText++;
+
+                minMin();
 
                 if (min.innerText == 60) {
                     hour.innerText++;
 
+                    minHour();
+
                     min.innerText = 0;
+
+                    minMin();
 
                     if (hour.innerText == 60) {
                         clearInterval(timer);
                     }
                 }
             }
-
             sec.innerText++;
 
-        } else {
+            minSec();
+            
+        }, 10);
+
+    btn.removeAttribute('data-state');
+    btn.setAttribute('data-state', 'stop');
+
+} else {
             clearInterval(timer);
-            counter = 0;
+
+            btn.removeAttribute('data-state');
+            btn.setAttribute('data-state', 'start');
+
             img.setAttribute('src', 'images/start.png');
+
             reset.className = 'reset2';
             save.className = 'save2';
             del.className = 'delete2';
         }
-    }, 10);
 }
 
 reset.addEventListener('click', resetValue);
 
 function resetValue() {
-    if (counter != 1) {
-        min.innerText = 0;
-        sec.innerText = 0;
-        hour.innerText = 0;
+    if (btn.getAttribute('data-state') == 'start') {
+        min.innerText = '0' + 0;
+        sec.innerText = '0' + 0;
+        hour.innerText = '0' + 0;
         reset.className = 'reset';
-        save.className = 'save';
-        // del.className = 'delete';
+        save.className = 'save2';
     }
 }
 
@@ -71,7 +108,7 @@ save.addEventListener('click', saveValue);
 var counter3 = -1;
 
 function saveValue() {
-    if (counter != 1 && sec.innerText != 0) {
+    if (true) {
         counter3++;
 
         var p = document.createElement('p');
@@ -86,10 +123,7 @@ function saveValue() {
 del.addEventListener('click', delValue);
 
 function delValue() {
-    if (counter != 1) {
-        //         while (myNode.firstChild) {
-        //         		myNode.removeChild(myNode.firstChild);
-        // }
+    if (true) {
         info.innerHTML = '';
         counter3 = -1;
     }

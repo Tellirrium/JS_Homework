@@ -1,3 +1,4 @@
+
 .btn img, .btnOf img {
 	width: 70px;
 	height: 70px;
@@ -13,9 +14,8 @@ span {
 	font-family: 'Lato', sans-serif;
 	font-size: 30px;
 	font-weight: bold;
-	padding: 0 10px;
+	padding: 0px 10px;
 }
-
 .reset, .delete, .save {
 	font-size: 12px;
 	display: flex;
@@ -26,7 +26,7 @@ span {
 	border-radius: 50%;
 	background-color: #A9A9A9;
 	color: white;
-	margin: 0 5px;
+	margin: 0px 5px;
 }
 
 .reset2, .delete2, .save2 {
@@ -39,7 +39,7 @@ span {
 	border-radius: 50%;
 	background-color: #2F4F4F;
 	color: white;
-	margin: 0 5px;
+	margin: 0px 5px;
 	cursor: pointer;
 }
 
@@ -52,6 +52,10 @@ span {
 	font-family: 'Lato', sans-serif;
 	font-size: 20px;
 	font-weight: bold;
-	padding: 0 10px;
+	padding: 0px 10px;
+}
+
+.btn {
+	display: inline-block;
 }
 
